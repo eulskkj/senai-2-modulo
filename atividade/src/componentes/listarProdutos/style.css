@@ -1,0 +1,72 @@
+/* atividade\src\componentes\listarProdutos\style.css */
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 32px;
+    background: #f7f7f7;
+}
+
+.produto-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    width: 260px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.produto-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+}
+
+.produto-imagem {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: #ececec;
+}
+
+.produto-nome {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #222;
+    text-align: center;
+}
+
+.produto-descricao {
+    font-size: 0.98rem;
+    color: #555;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.produto-preco {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1a8917;
+    margin-bottom: 16px;
+}
+
+.produto-botao {
+    background: #1a8917;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.produto-botao:hover {
+    background: #156d13;
+}
