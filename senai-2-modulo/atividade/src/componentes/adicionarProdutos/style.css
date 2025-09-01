@@ -1,0 +1,60 @@
+/* atividade\src\componentes\adicionarProdutos\style.css */
+.adicionar-produto-container {
+    background: #f8f9fa;
+    padding: 32px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    max-width: 400px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.adicionar-produto-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.adicionar-produto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.adicionar-produto-form label {
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.adicionar-produto-form input,
+.adicionar-produto-form select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.2s;
+}
+
+.adicionar-produto-form input:focus,
+.adicionar-produto-form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.adicionar-produto-form button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.adicionar-produto-form button:hover {
+    background: #0056b3;
+}

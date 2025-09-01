@@ -1,0 +1,69 @@
+
+/* App.css - Estilo básico e moderno */
+html, body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #000102 0%, #90adc0 100%);
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #b90c0c;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  padding: 32px 24px;
+}
+
+h1, h2, h3 {
+  color: #001aff;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+button {
+  background: #2563eb;
+  color: #e40f0f;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #1e40af;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 20px 0;
+  border: 1px solid #0453c9;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #0957a5;
+  transition: border 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 16px 6px;
+  }
+}
