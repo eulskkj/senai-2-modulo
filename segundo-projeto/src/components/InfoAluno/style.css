@@ -1,0 +1,73 @@
+/* src\components\InfoAluno\style.css */
+.info-aluno-container {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(60, 72, 88, 0.12);
+    padding: 32px 24px;
+    max-width: 400px;
+    margin: 32px auto;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.info-aluno-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.info-aluno-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-aluno-item {
+    font-size: 1.1rem;
+    color: #4b5563;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-aluno-item:last-child {
+    border-bottom: none;
+}
+
+.info-aluno-label {
+    font-weight: 600;
+    color: #2563eb;
+}
+
+.info-aluno-value {
+    font-weight: 400;
+    color: #111827;
+}
+
+@media (max-width: 500px) {
+    .info-aluno-container {
+        padding: 16px 8px;
+        max-width: 95vw;
+    }
+    .info-aluno-title {
+        font-size: 1.3rem;
+    }
+    .info-aluno-item {
+        font-size: 1rem;
+        padding: 8px 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
