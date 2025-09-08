@@ -1,0 +1,143 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'SamsungOne', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ==================
+   Paleta de cores
+   ================== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f1f1f;
+  --primary-color: #1428a0;
+  --input-bg: #f9f9f9;
+  --border-color: #ccc;
+  --button-bg: #1428a0;
+  --button-hover-bg: #0e1f7a;
+  --list-border: #e0e0e0;
+}
+
+/* Dark mode overrides */
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --primary-color: #3e8eff;
+  --input-bg: #1e1e1e;
+  --border-color: #333;
+  --button-bg: #3e8eff;
+  --button-hover-bg: #2c6ad9;
+  --list-border: #2a2a2a;
+}
+
+/* ==================
+   Container principal
+   ================== */
+.Info-Cliente {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Títulos */
+.Info-Cliente h2 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Formulário */
+.Info-Cliente form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Grupo de inputs */
+.Info-Cliente form div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.Info-Cliente label {
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+/* Inputs */
+.Info-Cliente input {
+  padding: 12px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.Info-Cliente input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Botão */
+.Info-Cliente button {
+  padding: 12px;
+  background-color: var(--button-bg);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.Info-Cliente button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+/* Lista de clientes */
+.Info-Cliente ul {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.Info-Cliente li {
+  padding: 10px;
+  border-bottom: 1px solid var(--list-border);
+  font-size: 15px;
+  color: var(--text-color);
+}
+
+.Info-Cliente li:last-child {
+  border-bottom: none;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .Info-Cliente {
+    padding: 20px;
+  }
+
+  .Info-Cliente h2 {
+    font-size: 20px;
+  }
+
+  .Info-Cliente button {
+    font-size: 14px;
+  }
+}
