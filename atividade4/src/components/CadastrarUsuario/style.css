@@ -1,0 +1,50 @@
+/* src\assets\components\CadrastarUsuario\style.css */
+
+.cadastrar-usuario {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+}
+
+.cadastrar-usuario form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cadastrar-usuario label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cadastrar-usuario input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+.cadastrar-usuario input:focus {
+  outline: none;
+  border-color: #4cafef;
+  box-shadow: 0px 0px 5px #4cafef;
+}
+
+.cadastrar-usuario button {
+  background-color: #4cafef;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cadastrar-usuario button:hover {
+  background-color: #3a9fd9;
+}
