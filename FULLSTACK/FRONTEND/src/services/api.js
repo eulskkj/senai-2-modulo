@@ -1,9 +1,10 @@
-import axios from "axios";
-    
-// Configuração da instancia do axios com a url base da api
+import axios from 'axios';
 
+// O servidor backend local provavelmente usa HTTP, não HTTPS.
+// Colocamos um timeout razoável para detectar falhas de conexão rapidamente.
 const api = axios.create({
-    baseURL: "https://localhost:3000",
+  baseURL: 'http://localhost:3000', // URL BASE DA API (HTTP para desenvolvimento local)
+  timeout: 5000,
 });
-export default api;    
 
+export default api;
