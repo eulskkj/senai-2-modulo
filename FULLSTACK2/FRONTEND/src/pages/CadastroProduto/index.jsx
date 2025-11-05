@@ -1,11 +1,12 @@
-import {useForm} from "react-hook-form";
+import { useForm} from "react-hook-form";
+import { useState } from "react";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {toast} from "react-toastify";
 import api from "../../services/api";
 import "./style.css";
 
-const esquemaDeCadrastoProduto = yup.object({
+const esquemaDeCadastroProduto = yup.object({
     nome: yup
     .string()
     .required("O nome do produto é obrigatório")
@@ -15,18 +16,19 @@ const esquemaDeCadrastoProduto = yup.object({
     .required("O lote é obrigatório"),
     validade: yup
     .date()
-    .required("A validade é obrigatória")
-    .min(new Date(), "A validade deve ser uma data futura"),
+    .required("A validade é obrigatória"),
     categoria: yup
     .string()
     .required("A categoria é obrigatória"),
     quantidade: yup
     .number()
+    .typeError("A quantidade deve ser um número")
     .required("A quantidade é obrigatória")
     .min(1, "A quantidade deve ser pelo menos 1"),
 });
 
-function PaginaDeCadrastoDeProduto() {
+function CadastroProduto() {
+    const [estaEnviando, setEstaEnviando] = useState(false);
     const {
         register: registrarCampo,
         handleSubmit: lidarComEnvioDoFormulario,
@@ -34,12 +36,13 @@ function PaginaDeCadrastoDeProduto() {
         setError: definirErroNoCampo,
         reset: limparCampoDoFormulario,
     } = useForm({
-        resolver: yupResolver(esquemaDeCadrastoProduto),
+        resolver: yupResolver(esquemaDeCadastroProduto),
         defaultValues: {nome: "", lote: "", validade: "", categoria: "", quantidade: "" },
     });
 
 async function enviarDados(dadosDoProduto) {
     try {
+        setEstaEnviando(true);
         await api.post("/produtos", dadosDoProduto);
         toast.success("Produto cadastrado com sucesso!");
         limparCampoDoFormulario();
@@ -56,6 +59,8 @@ async function enviarDados(dadosDoProduto) {
         }
         toast.error("Erro ao cadastrar o produto. Por favor, tente novamente.");
         console.log("Erro ao cadastrar o produto:", error);
+    } finally {
+            setEstaEnviando(false);
     }
 }
     return (
@@ -77,7 +82,7 @@ async function enviarDados(dadosDoProduto) {
                     )}
                 {/* Lote */}
                 <div className="form-group">
-                    <label htmlFor="campo-lote"></label>
+                    <label htmlFor="campo-lote">Lote</label>
                     <input
                         id="campo-lote"
                         type="text"
@@ -90,39 +95,40 @@ async function enviarDados(dadosDoProduto) {
 
                 {/* Validade */}
                 <div className="form-group">
-                    <label htmlFor="campo-validade"></label>
+                    <label htmlFor="campo-validade">Validade</label>
                     <input
-                        id="campo-validade"
-                        type="date"
-                        {...registrarCampo("validade")}
-                    />
+                            id="campo-validade"
+                            type="date"
+                            {...registrarCampo("validade")}
+                        />
                 </div>
-                    {errosDoFormulario.lote && (
-                        <p className="error-message">{errosDoFormulario.validade.message}</p>
-                    )}
+                {errosDoFormulario.validade && (
+                    <p className="error-message">{errosDoFormulario.validade.message}</p>
+                )}
 
                 {/* categoria */}
-                <div className="form-group">
-                    <label htmlFor="campo-categoria"></label>
-                    <input
-                        id="campo-lote"
-                        type="text"
-                        {...registrarCampo("categoria")}
-                    />
-                </div>
-                    {errosDoFormulario.lote && (
+                    <div className="form-group">
+                        <label htmlFor="campo-categoria">Categoria</label>
+                        <input
+                            id="campo-categoria"
+                            type="text"
+                            {...registrarCampo("categoria")}
+                        />
+                    </div>
+                    {errosDoFormulario.categoria && (
                         <p className="error-message">{errosDoFormulario.categoria.message}</p>
                     )}
+                    
                 {/* Quantidade */}
                 <div className="form-group">
-                    <label htmlFor="campo-quantidade"></label>
+                    <label htmlFor="campo-quantidade">Quantidade</label>
                     <input
                         id="campo-quantidade"
                         type="number"
-                        {...registrarCampo("quantidade")}
+                        {...registrarCampo("quantidade", { valueAsNumber: true })}
                     />
                 </div>
-                    {errosDoFormulario.lote && (
+                    {errosDoFormulario.quantidade && (
                         <p className="error-message">{errosDoFormulario.quantidade.message}</p>
                     )}  
                 <button type="submit" disabled= {estaEnviando}>
@@ -132,4 +138,4 @@ async function enviarDados(dadosDoProduto) {
         </div>
     );
 }
-export default PaginaDeCadrastoDeProduto;
+export default CadastroProduto;

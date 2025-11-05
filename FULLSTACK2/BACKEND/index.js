@@ -85,6 +85,20 @@ app.post('/clientes', async (req, res) => {
         res.status(500).json({ message: 'Erro interno do servidor.' });    
     }
 });
+app.post('/produtos', async (req, res) => {
+    try {
+        const { nome, lote, validade, categoria, quantidade } = req.body;
+        const novoProduto = await produto.create({ nome, lote, validade, categoria, quantidade });
+        res.status(201).json(novoProduto);
+    } catch (error) {
+      if (error.name === 'SequelizeValidationError') {
+        return res.status(409).json({ message: 'Dados inválidos. Verifique os campos e tente novamente.' });
+        }
+        console.error('Erro ao criar produto:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });    
+    }
+
+});
 
 sequelize.sync().then(() => {
     app.listen(port, () => {
@@ -93,4 +107,4 @@ sequelize.sync().then(() => {
     });
 }).catch((err => {
     console.error('Erro ao sincronizar o banco de dados:', err);
-}));
+}))

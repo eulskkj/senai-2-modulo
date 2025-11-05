@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,7 +7,7 @@ import api from "../../services/api";
 import "./style.css";
 
 
-const esquemaDeCadrastoCliente = yup.object({
+const esquemaDeCadastoCliente = yup.object({
     nome: yup
     .string()
     .required("O nome é obrigatório")
@@ -29,7 +29,8 @@ const esquemaDeCadrastoCliente = yup.object({
     .min(5, "O endereço deve ter pelo menos 5 caracteres"),
 });
 
-function PaginaDeCadrastoDeCliente() {
+function CadastroCliente() {
+    const [estaEnviando, setEstaEnviando] = useState(false);
     const {
         register: registrarCampo,
         handleSubmit: lidarComEnvioDoFormulario,
@@ -37,20 +38,21 @@ function PaginaDeCadrastoDeCliente() {
         setError: definirErroNoCampo,
         reset: limparCampoDoFormulario,
     } = useForm({
-        resolver: yupResolver(esquemaDeCadrastoCliente),
+        resolver: yupResolver(esquemaDeCadastoCliente),
         defaultValues: {nome: "", email: "", telefone: "", formaPagamento: "", endereco: "" },
     });
 
 
 async function enviarDados(dadosDoCliente) {
     try {
+        setEstaEnviando(true);
         await api.post("/clientes", dadosDoCliente);
         alert("Cliente cadastrado com sucesso!");
         limparCampoDoFormulario();
     } catch (error) {
         const codigoDeStatus = error.response?.status;
-    const mensagemDoServidor =
-    erro?.response?.data?.menssage || erro?.response?.data?.error || "";
+        const mensagemDoServidor =
+        error?.response?.data?.menssage || error?.response?.data?.error || "";
     
     if (codigoDeStatus === 409 || mensagemDoServidor.toLowerCase().includes("email")) {
         definirErroNoCampo("email", {
@@ -60,11 +62,13 @@ async function enviarDados(dadosDoCliente) {
     }
         toast.error("Erro ao cadastrar o cliente. Por favor, tente novamente.");
         console.log("Erro ao cadastrar o cliente:", error);
+    } finally {
+        setEstaEnviando(false);
     }
 }
     return (
-        <div className="cadrasto-container">
-        <h2>Cadrasto de Cliente</h2>
+        <div className="cadastro-container">
+        <h2>Cadastro de Cliente</h2>
         <form noValidate onSubmit={lidarComEnvioDoFormulario(enviarDados)}>
             {/* Nome */}
             <div className="form-group">
@@ -143,6 +147,6 @@ async function enviarDados(dadosDoCliente) {
     );
 }
 
-export default PaginaDeCadrastoDeCliente;
+export default CadastroCliente;
 
         
